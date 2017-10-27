@@ -1,0 +1,49 @@
+h1 {
+	color:red;
+}
+/*
+ul {
+  list-style-type: none;
+
+}
+
+#herolist li {
+    display:inline;
+}*/
+
+.container {
+    width: 1500px;
+}
+.container ul {
+    padding: 0; /* remove default padding and all margins! */
+    margin: 0;
+    list-style-type: none; /* remove the • */
+    text-align: center;
+}
+.container ul li {
+    width: 150px;
+    height: 100px;
+/*    background-color: red;*/
+    float: left;
+    margin-left: 20px;
+	margin-top: 30px;
+    margin-bottom: 300px;
+}
+
+
+.Chill {
+	border: 1px solid black;
+	margin-top: 7px;
+}
+
+.Hummingbird {
+	margin-bottom: 70px !important;
+}
+
+.Seer {
+	margin-bottom: 90px !important;
+}
+
+.pebble {
+	margin-bottom: 120px !important;
+}
