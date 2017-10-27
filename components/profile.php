@@ -16,11 +16,11 @@ require('../database.php');
 
   if (isset($_GET['postName'])) {
     $safeName = htmlentities($_GET['postName']);
-  echo 'isset'.$id;
+
     addPost($id ,$safeName);
   
   }
-  echo 'hi'.$id;
+
 
 
 
@@ -49,9 +49,9 @@ function getPosts($id) {
 
 function addPost($id , $postToAdd) {
     $sql = "INSERT INTO posts (hero_id, post ) VALUES ("  . $id .  ", '"   . $postToAdd . "');";
-    echo $sql;
+
     $request = pg_query(getDb(), $sql);
-    echo 'funtion addPost'.$id;
+
 
   }
 
@@ -96,10 +96,11 @@ function addPost($id , $postToAdd) {
             </div> 
 
               <div class="col">
-                <form class="form-inline" method="get" action="profile.php?id=<?=$heroes["id"]?>">
+                <form class="form-inline" method="get" >
 
                   <label class="sr-only" for="postName">Post</label>
                   <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="postName" name="postName" placeholder="Tell me something!">
+                  <input type="hidden" name="id" value="<?=$id?>" />
 
                   <button type="submit" class="btn btn-secondary">Post</button>
 
