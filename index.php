@@ -14,7 +14,7 @@
 <?php include('./components/heroname.php'); ?>
 
 
- 	<h4 class="text-center">HEROS!</h4>
+
       <ul>
       <?php 
       	foreach (getHeroes() as $heroes) { 

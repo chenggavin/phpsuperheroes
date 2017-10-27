@@ -1,15 +1,8 @@
 h1 {
 	color:red;
-}
-/*
-ul {
-  list-style-type: none;
-
+    text-align: center;
 }
 
-#herolist li {
-    display:inline;
-}*/
 
 .container {
     width: 1500px;
@@ -32,7 +25,6 @@ ul {
 
 
 .Chill {
-	border: 1px solid black;
 	margin-top: 7px;
 }
 

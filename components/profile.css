@@ -1,7 +1,71 @@
+
+
+
 ul {
 	list-style-type: none;
 }
 
-h1 {
+.herodiv {
+
+	width: 250px;
+	height: 250px;
 	text-align: center;
+	margin-bottom: 20px;
+	background-color: white;
+	margin-left:25%;
 }
+
+.heropic {
+	width: 150px;
+}
+
+.heroname {
+/*	margin-top: 50px;*/
+}
+
+img {
+	margin: 5px;
+	padding: 10px;
+}
+
+body {
+	margin-top: 3%;
+/*	background-color: #eaebee;*/
+}
+
+.about {
+	background-color:white;
+	margin-bottom: 50px;
+	font-size: 14px;
+
+}
+
+.power {
+	text-align: center;
+	border: 1px solid grey;
+}
+
+.bigdiv {
+
+}
+
+.Hummingbird {
+	margin-top: 5px;
+}
+
+.postlist {
+	padding: 0px;
+}
+
+
+.postli {
+	margin-bottom: 50px;
+	border: 1px solid grey;
+	padding: 15px;
+}
+
+
+
+
+
+
