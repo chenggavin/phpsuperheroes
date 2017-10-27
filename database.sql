@@ -7,10 +7,17 @@ CREATE TABLE heroes (
 );
 
 INSERT INTO heroes (name, about_me, biography) VALUES ('Chill Man', 'The coolest dude you''ll ever meet.', 'In a freak industrial accident, Chill Man was dunked in toxic waste. After an agonizing transformation, he developed the ability to exhale sub-zero mist that freezes everything it touches.');
+
 INSERT INTO heroes (name, about_me, biography) VALUES ('Mental Mary', 'Her name may be ordinary, but her powers are not!', 'Once a famous medical researcher, Mental Mary performed an experimental procedure on herself - with unexpected results. Her full mental potential was unlocked, giving her powers over the physical world and the minds of those around her.');
+
 INSERT INTO heroes (name, about_me, biography) VALUES ('Muscles McMuscleMan', 'Brute strength will not solve all problems, but he doesn''t know that.', 'Born on another planet and stranded here during an intergalactic training exercise, Muscles'' muscles expanded to gigantic proportion in Earth''s nitrogen-rich atmosphere, giving him amazing strength. The extra arms don''t hurt, either.');
+
 INSERT INTO heroes (name, about_me, biography) VALUES ('The Hummingbird', 'He flies and he''s really fast.', 'Perhaps the next step in human evolution, The Hummingbird''s unique abilities manifested shortly after birth, when he floated out of the hospital nursery and into the care OF General Allen Fitzpatrick and his Gamma Team. After Fitzpatrick''s death at the hands of Omega Force, The Hummingbird went rogue...FOR REVENGE!');
+
 INSERT INTO heroes (name, about_me, biography) VALUES ('The Seer', 'He can see into your soul. Literally.', 'The Seer leads a normal life, so long AS he wears his specially-shielded glasses. Once he removes them, he can see through walls, mountains, flesh - TO the secrets held within.');
+
+INSERT INTO heroes (name, about_me, biography) VALUES ('pebble', 'He is a little rock', 'just kinda sits there, has camoflauge');
+
 
 CREATE TABLE relationship_types (
     id serial PRIMARY key,
@@ -52,6 +59,7 @@ INSERT INTO abilities (ability) VALUES ('Telepathy');
 INSERT INTO abilities (ability) VALUES ('Frost Breath');
 INSERT INTO abilities (ability) VALUES ('Super Speed');
 INSERT INTO abilities (ability) VALUES ('X-Ray Vision');
+INSERT INTO abilities (ability) VALUES ('Camouflage');
 
 CREATE TABLE ability_hero (
     id serial PRIMARY key,
@@ -66,4 +74,4 @@ INSERT INTO ability_hero (hero_id, ability_id) VALUES (3, 1);
 INSERT INTO ability_hero (hero_id, ability_id) VALUES (4, 2);
 INSERT INTO ability_hero (hero_id, ability_id) VALUES (4, 6);
 INSERT INTO ability_hero (hero_id, ability_id) VALUES (5, 7);
- 
+INSERT INTO ability_hero (hero_id, ability_id) VALUES (6, 8);
