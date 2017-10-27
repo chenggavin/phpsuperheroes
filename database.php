@@ -1,3 +1,25 @@
+
+
+
+<!-- 						WORKING LOCALLY 			-->
+
+
+
+<?php
+  // function getDb() {
+  //   $db = pg_connect("host=localhost port=5432 dbname=super_dev user=superuser password=supersupersuper");
+  //   return $db;
+  // }
+?>
+
+
+
+
+
+
+
+<!-- 						FOR HEROKU PUSH! 						-->
+
 <?php
   function getDb() {
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/.env')) {

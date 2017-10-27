@@ -6,14 +6,20 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://use.fontawesome.com/14f1f2c704.js"></script>
 </head>
+
 <body class="container">
+
 <h1>SUPER HEROS</h1>
+
 <?php include('./components/heroname.php'); ?>
+
 
  	<h4 class="text-center">HEROS!</h4>
       <ul>
-      <?php foreach (getHeroes() as $heroes) { ?>
-        <li>
+      <?php 
+      	foreach (getHeroes() as $heroes) { 
+      ?>
+      <li><a href="./components/profile.php?id=<?=$heroes["id"]?>">
    			
    			<div class="heroname mb-5 <?=$heroes['name']?>">
           <?=$heroes['name']?>
@@ -23,13 +29,10 @@
 					<img src="<?=$heroes['image_url']?>">
 				</div>
 
-        </li>
+				</a></li>
       <?php } ?>
       </ul>
 
-
-
-	</div>
 
 
 

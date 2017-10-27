@@ -1,13 +1,13 @@
 
 <?php
 
-require_once('database.php');
+require('database.php');
 
 
 
 
 function getHeroes() {
-    $sql = "SELECT name, image_url FROM heroes;";
+    $sql = "SELECT * FROM heroes;";
     $request = pg_query(getDb(), $sql);
     return pg_fetch_all($request);
   }

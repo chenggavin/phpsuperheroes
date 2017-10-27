@@ -78,10 +78,17 @@ INSERT INTO ability_hero (hero_id, ability_id) VALUES (6, 8);
 
 
 
+ALTER TABLE heroes
+ADD profilepic varchar(300);
 
 
 
-
+UPDATE heroes SET profilepic = '../images/chillman.png' WHERE id = 1;
+UPDATE heroes SET profilepic = '../images/mentalmary.png' WHERE id = 2;
+UPDATE heroes SET profilepic = '../images/muscles.png' WHERE id = 3;
+UPDATE heroes SET profilepic = '../images/bird.png' WHERE id = 4;
+UPDATE heroes SET profilepic = '../images/seer.png' WHERE id = 5;
+UPDATE heroes SET profilepic = '../images/pebble.png' WHERE id = 6;
 
 
 
