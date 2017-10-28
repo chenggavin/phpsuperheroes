@@ -9,7 +9,7 @@
 
 <body class="container">
 
-<h1>SUPER HEROS</h1>
+<h1>SUPER HEROES</h1>
 
 <?php include('./components/heroname.php'); ?>
 
