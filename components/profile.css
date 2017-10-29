@@ -20,7 +20,8 @@ ul {
 }
 
 .heroname {
-/*	margin-top: 50px;*/
+    font-family: 'Russo One', sans-serif;
+    font-size: 30px;
 }
 
 img {
@@ -62,6 +63,16 @@ body {
 	margin-bottom: 50px;
 	border: 1px solid grey;
 	padding: 15px;
+}
+
+a:link {
+color: #cc0000;
+}
+a:visited {
+color: #999999;
+}
+a:hover {
+color: #ff3300;
 }
 
 

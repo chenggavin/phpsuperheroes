@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="profile.css">
   <script src="https://use.fontawesome.com/14f1f2c704.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 </head>
 <body class="container">
 
@@ -43,10 +44,10 @@
     }
 
   function getPosts($id) {
-    $sql = "SELECT * FROM posts WHERE hero_id=".$id;
+    $sql = "SELECT * FROM posts WHERE hero_id=".$id. "ORDER BY id ASC;";
       $request = pg_query(getDb(), $sql);
       return pg_fetch_all($request);
-  }
+  } 
 
   function addPost($id , $postToAdd) {
       $sql = "INSERT INTO posts (hero_id, post ) VALUES ("  . $id .  ", '"   . $postToAdd . "');";
@@ -73,6 +74,9 @@
           <div class="heroname mb-5 <?=$heroes['name']?>">
             <?=$heroes['name']?>
           </div>
+            <div class="mt-5 col">
+              <a href="../index.php">Return to full Roster</a>
+            </div>
         </div>
       </div>
    
@@ -98,27 +102,32 @@
           </form>
         </div>
 
-        <div class="col">  
+        <div class="col mt-5">  
           <h4>Posts</h4>
-          <ul class="postlist">
-          <?php foreach (getPosts($id) as $post) { ?>
-            <li class="mb-20 postli">
-              <div class="row">
-                <div class="col-3">
-                  <form method="get">
-                    <input name="removePost" value="<?=$post['id']?>" type="hidden">
-                    <input name="id" value="<?=$id?>" type="hidden">
-                    <button class="btn btn-sm btn-outline-secondary" type="submit">X</button>
-                  </form>
-                </div>         
+            <ul class="postlist mt-3">
+            <?php if ((getPosts($id))): 
+               foreach (getPosts($id) as $post) { ?>
+                <li class="mb-20 postli">
+                  <div class="row">
+                    <div class="col-3">
+                      <form method="get">
+                        <input name="removePost" value="<?=$post['id']?>" type="hidden">
+                        <input name="id" value="<?=$id?>" type="hidden">
+                        <button class="btn btn-sm btn-outline-secondary" type="submit">X</button>
+                      </form>
+                    </div>         
+                    <div style="padding-left: 0px;">
+                      <?=$post['post']?>
+                    </div>
+                  </div>
+                </li>
+                <?php } 
 
-                <div style="padding-left: 0px;">
-                  <?=$post['post']?>
-                </div>
-              </div>
-            </li>
-            <?php } ?>
-          </ul>
+                else: ?>
+                 <p>I have no posts yet, make me one!</p>
+
+              <? endif; ?>
+            </ul>
         </div>                    
       </div>
     </div>
@@ -126,12 +135,6 @@
 
 
     
-
-    <div class="row">
-        <div class="mt-5 col">
-          <a href="../index.php">Return to full Roster</a>
-        </div>
-    </div>
 
 
 
