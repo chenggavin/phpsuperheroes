@@ -26,6 +26,7 @@
     }
 
 
+
   function getHeroes($id) {
       $sql = "SELECT * FROM heroes WHERE id=".$id;
       $request = pg_query(getDb(), $sql);
