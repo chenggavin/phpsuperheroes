@@ -5,11 +5,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="profile.css">
   <script src="https://use.fontawesome.com/14f1f2c704.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 </head>
 <body class="container">
 
 <?php 
 
+// Connecting to data base via database url/postgreSQL.
   require('../database.php'); 
 
     $id = intval(htmlentities($_GET["id"]));
@@ -26,12 +28,13 @@
     }
 
 
+// Getting hero names.
   function getHeroes($id) {
       $sql = "SELECT * FROM heroes WHERE id=".$id;
       $request = pg_query(getDb(), $sql);
       return pg_fetch_assoc($request);
     }
-
+// Getting hero abilities.
   function getPower($id) {
       $sql = "SELECT * FROM abilities 
       JOIN ability_hero ON abilities.id = ability_hero.ability_id 
@@ -40,19 +43,19 @@
       $request = pg_query(getDb(), $sql);
       return pg_fetch_assoc($request);
     }
-
+// Getting hero Posts.
   function getPosts($id) {
-    $sql = "SELECT * FROM posts WHERE hero_id=".$id;
+    $sql = "SELECT * FROM posts WHERE hero_id=".$id. "ORDER BY id ASC;";
       $request = pg_query(getDb(), $sql);
       return pg_fetch_all($request);
-  }
-
+  } 
+// Function to add posts to individual hero profiles.
   function addPost($id , $postToAdd) {
       $sql = "INSERT INTO posts (hero_id, post ) VALUES ("  . $id .  ", '"   . $postToAdd . "');";
       $request = pg_query(getDb(), $sql);
     }
 
-
+// Function delete posts from individual hero profiles.
   function removePost($id) {
       $sql = "DELETE FROM posts where id=".$id;
       $request = pg_query(getDb(), $sql);
@@ -61,8 +64,7 @@
 
 
 
-
-
+<!-- Displaying each individual hero names and profile picture from database. -->
 <div class="container bigdiv">
   <?php  $heroes = getHeroes($id) ?>  
     <div class="row">
@@ -72,9 +74,12 @@
           <div class="heroname mb-5 <?=$heroes['name']?>">
             <?=$heroes['name']?>
           </div>
+            <div class="mt-5 col">
+              <a href="../index.php">Return to full Roster</a>
+            </div>
         </div>
       </div>
-   
+   <!-- Displaying individual biography and abilities from database -->
       <div class="col-5">
         <div class="about container">
           <h5>About Me</h5>
@@ -89,6 +94,8 @@
 
         </div> 
         <div class="col">
+          <!-- Input field for the user to add a post. -->
+          <!-- Forms must be used in PHP to submit to data base. One input for the textbox and the other is 'hidden' to change URL from the value .-->
           <form class="form-inline" method="get" >
             <label class="sr-only" for="postName">Post</label>
             <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="postName" name="postName" placeholder="Tell me something!">
@@ -97,27 +104,34 @@
           </form>
         </div>
 
-        <div class="col">  
+        <div class="col mt-5">  
           <h4>Posts</h4>
-          <ul class="postlist">
-          <?php foreach (getPosts($id) as $post) { ?>
-            <li class="mb-20 postli">
-              <div class="row">
-                <div class="col-3">
-                  <form method="get">
-                    <input name="removePost" value="<?=$post['id']?>" type="hidden">
-                    <input name="id" value="<?=$id?>" type="hidden">
-                    <button class="btn btn-sm btn-outline-secondary" type="submit">X</button>
-                  </form>
-                </div>         
+          <!-- Displaying and removing posts -->
+          <!-- Used different PHP syntx for 'if statement here' -->
+            <ul class="postlist mt-3">
+            <?php if ((getPosts($id))): 
+               foreach (getPosts($id) as $post) { ?>
+                <li class="mb-20 postli">
+                  <div class="row">
+                    <div class="col-3">
+                      <form method="get">
+                        <input name="removePost" value="<?=$post['id']?>" type="hidden">
+                        <input name="id" value="<?=$id?>" type="hidden">
+                        <button class="btn btn-sm btn-outline-secondary" type="submit">X</button>
+                      </form>
+                    </div>         
+                    <div style="padding-left: 0px;">
+                      <?=$post['post']?>
+                    </div>
+                  </div>
+                </li>
+                <?php } 
 
-                <div style="padding-left: 0px;">
-                  <?=$post['post']?>
-                </div>
-              </div>
-            </li>
-            <?php } ?>
-          </ul>
+                else: ?>
+                 <p>I have no posts yet, make me one!</p>
+
+              <? endif; ?>
+            </ul>
         </div>                    
       </div>
     </div>
@@ -125,12 +139,6 @@
 
 
     
-
-    <div class="row">
-        <div class="mt-5 col">
-          <a href="../index.php">Return to full Roster</a>
-        </div>
-    </div>
 
 
 
