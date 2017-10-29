@@ -13,10 +13,10 @@
 
 <h1>SUPER HEROES</h1>
 
+<!-- 	Including function to recieve heronames -->
 <?php include('./components/heroname.php'); ?>
 
-
-
+<!-- Displaying each heroes' name and profile picture -->
       <ul>
       <?php 
       	foreach (getHeroes() as $heroes) { 
