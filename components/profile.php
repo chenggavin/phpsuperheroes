@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 </head>
 <body class="container">
-
+  
 <?php 
 
 // Connecting to data base via database url/postgreSQL.
@@ -26,7 +26,6 @@
       removePost($safeId);
     
     }
-
 
 // Getting hero names.
   function getHeroes($id) {
@@ -62,8 +61,6 @@
     }
 ?> 
 
-
-
 <!-- Displaying each individual hero names and profile picture from database. -->
 <div class="container bigdiv">
   <?php  $heroes = getHeroes($id) ?>  
@@ -87,11 +84,9 @@
           <h5 class="mt-5"> Biography </h5>
           <?=$heroes['biography']?>
           <h5 class="mt-5"> Abilities </h5>
-
             <?php $power = getPower($id); 
                 echo $power['ability']."\n";
             ?>
-
         </div> 
         <div class="col">
           <!-- Input field for the user to add a post. -->
@@ -103,7 +98,6 @@
             <button type="submit" class="btn btn-secondary">Post</button>
           </form>
         </div>
-
         <div class="col mt-5">  
           <h4>Posts</h4>
           <!-- Displaying and removing posts -->
@@ -136,26 +130,5 @@
       </div>
     </div>
 </div>
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
